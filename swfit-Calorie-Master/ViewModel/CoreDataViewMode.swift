@@ -71,7 +71,7 @@ class CoreDataViewModel: ObservableObject {
         }
         save(context: container.viewContext)
     }
-    
+    // these fun for updtate
     private func updateTotalCalories() {
         totalCaloriesToday = food.reduce(0.0) { result, item in
             if Calendar.current.isDateInToday(item.data ?? Date()) {
