@@ -64,6 +64,8 @@ class CoreDataViewModel: ObservableObject {
         save(context: context)
     }
     
+    // these fun for delet
+    
     func deleteFood(atOffsets offsets: IndexSet) {
         offsets.forEach { index in
             let foodToDelete = food[index]
