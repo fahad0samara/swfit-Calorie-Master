@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct swfit_Calorie_MasterApp: App {
+    @StateObject private var viewModel = CoreDataViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environment(\.managedObjectContext, viewModel.container.viewContext)
+
         }
     }
 }

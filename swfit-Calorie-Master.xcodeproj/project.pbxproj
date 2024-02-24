@@ -11,6 +11,11 @@
 		296CB0D72B886E4800D573B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB0D62B886E4800D573B3 /* ContentView.swift */; };
 		296CB0D92B886E4800D573B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 296CB0D82B886E4800D573B3 /* Assets.xcassets */; };
 		296CB0DC2B886E4800D573B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 296CB0DB2B886E4800D573B3 /* Preview Assets.xcassets */; };
+		296CB0E72B886FD500D573B3 /* FoodItem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 296CB0E52B886FD500D573B3 /* FoodItem.xcdatamodeld */; };
+		296CB0E92B88765400D573B3 /* CoreDataViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB0E82B88765400D573B3 /* CoreDataViewMode.swift */; };
+		296CB0EB2B88773300D573B3 /* EditFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB0EA2B88773300D573B3 /* EditFoodView.swift */; };
+		296CB0ED2B88777D00D573B3 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB0EC2B88777D00D573B3 /* AddFoodView.swift */; };
+		296CB0EF2B88C22900D573B3 /* NutritionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB0EE2B88C22900D573B3 /* NutritionAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		296CB0D62B886E4800D573B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		296CB0D82B886E4800D573B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		296CB0DB2B886E4800D573B3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		296CB0E62B886FD500D573B3 /* FoodItem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodItem.xcdatamodel; sourceTree = "<group>"; };
+		296CB0E82B88765400D573B3 /* CoreDataViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewMode.swift; sourceTree = "<group>"; };
+		296CB0EA2B88773300D573B3 /* EditFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFoodView.swift; sourceTree = "<group>"; };
+		296CB0EC2B88777D00D573B3 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
+		296CB0EE2B88C22900D573B3 /* NutritionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +61,10 @@
 		296CB0D32B886E4800D573B3 /* swfit-Calorie-Master */ = {
 			isa = PBXGroup;
 			children = (
+				296CB0E42B886F2700D573B3 /* Model */,
+				296CB0E32B886F1900D573B3 /* ViewModel */,
+				296CB0E22B886E8600D573B3 /* Views */,
 				296CB0D42B886E4800D573B3 /* swfit_Calorie_MasterApp.swift */,
-				296CB0D62B886E4800D573B3 /* ContentView.swift */,
 				296CB0D82B886E4800D573B3 /* Assets.xcassets */,
 				296CB0DA2B886E4800D573B3 /* Preview Content */,
 			);
@@ -65,6 +77,33 @@
 				296CB0DB2B886E4800D573B3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		296CB0E22B886E8600D573B3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				296CB0D62B886E4800D573B3 /* ContentView.swift */,
+				296CB0EA2B88773300D573B3 /* EditFoodView.swift */,
+				296CB0EC2B88777D00D573B3 /* AddFoodView.swift */,
+				296CB0EE2B88C22900D573B3 /* NutritionAPI.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		296CB0E32B886F1900D573B3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				296CB0E82B88765400D573B3 /* CoreDataViewMode.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		296CB0E42B886F2700D573B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				296CB0E52B886FD500D573B3 /* FoodItem.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				296CB0E92B88765400D573B3 /* CoreDataViewMode.swift in Sources */,
 				296CB0D72B886E4800D573B3 /* ContentView.swift in Sources */,
+				296CB0EF2B88C22900D573B3 /* NutritionAPI.swift in Sources */,
+				296CB0ED2B88777D00D573B3 /* AddFoodView.swift in Sources */,
+				296CB0E72B886FD500D573B3 /* FoodItem.xcdatamodeld in Sources */,
 				296CB0D52B886E4800D573B3 /* swfit_Calorie_MasterApp.swift in Sources */,
+				296CB0EB2B88773300D573B3 /* EditFoodView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +386,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		296CB0E52B886FD500D573B3 /* FoodItem.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				296CB0E62B886FD500D573B3 /* FoodItem.xcdatamodel */,
+			);
+			currentVersion = 296CB0E62B886FD500D573B3 /* FoodItem.xcdatamodel */;
+			path = FoodItem.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 296CB0C92B886E4800D573B3 /* Project object */;
 }
