@@ -26,6 +26,15 @@ class CoreDataViewModel: ObservableObject {
         fetchFood()
     }
     
+    func groupedFoodByDay() -> [[FoodEntity]] {
+          let groupedDictionary = Dictionary(grouping: food) { (foodEntity) -> Date in
+              guard let date = foodEntity.data else { return Date() }
+              let components = Calendar.current.dateComponents([.year, .month, .day], from: date)
+              return Calendar.current.date(from: components) ?? Date()
+          }
+          return groupedDictionary.sorted { $0.key > $1.key }.map { $0.value }
+      }
+    
     func fetchFood() {
         let request: NSFetchRequest<FoodEntity> = FoodEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(keyPath: \FoodEntity.data, ascending: false)]

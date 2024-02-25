@@ -11,49 +11,61 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @StateObject var viewModel = CoreDataViewModel()
     @State private var showAddFoodView = false
+    @State private var selectedFood: FoodEntity?
+
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 16) {
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 12) {
                     Text("Today's Nutrition")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                     
-                    NutritionSummaryView(title: "Calories", value: Int(viewModel.totalCaloriesToday), color: .gray)
-                    NutritionSummaryView(title: "Protein", value: Int(viewModel.totalProteinToday()), color: .blue)
-                    NutritionSummaryView(title: "Fat", value: Int(viewModel.totalFatToday()), color: .green)
-                    NutritionSummaryView(title: "Carbohydrates", value: Int(viewModel.totalCarbohydratesToday()), color: .orange)
+                    HStack(spacing: 25) {
+                        
+                        NutritionSummaryView(title: "Calories", value: Int(viewModel.totalCaloriesToday), color: .gray, icon: "flame.fill")
+                        NutritionSummaryView(title: "Protein", value: Int(viewModel.totalProteinToday()), color: .blue, icon: "bolt.fill")
+                        NutritionSummaryView(title: "Fat", value: Int(viewModel.totalFatToday()), color: .green, icon: "drop.fill")
+                        NutritionSummaryView(title: "Carbohydrates", value: Int(viewModel.totalCarbohydratesToday()), color: .orange, icon: "leaf.fill")
+                    }
                 }
                 .padding(.horizontal)
                 
                 List {
                     ForEach(viewModel.food) { food in
-                        NavigationLink(destination: EditFoodView(food: food, viewModel: viewModel)) {
+                        NavigationLink(destination: FoodDetailView(food: food), tag: food, selection: $selectedFood) {
                             FoodListItemView(food: food)
+                                .onTapGesture {
+                                    selectedFood = food
+                                }
                         }
                     }
                     .onDelete(perform: deleteFood)
                 }
             }
-            
+
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showAddFoodView.toggle()
-                    }) {
-                        Image(systemName: "plus.circle")
-                            .font(.title)
-                    }
-                }
+    
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
             }
-            .sheet(isPresented: $showAddFoodView) {
-                AddFoodView(viewModel: viewModel)
+            .overlay(
+            // Floating button
+            NavigationLink(destination:AddFoodView(viewModel: viewModel)) {
+                Image(systemName: "pencil.circle.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 50, height: 50)
+                    .foregroundColor(.blue)
+                    .padding()
             }
+            .padding(.trailing, 16)
+            .padding(.bottom, 16)
+            , alignment: .bottomTrailing
+            )
         }
     }
     
@@ -64,20 +76,24 @@ struct ContentView: View {
     }
 }
 
+// NutritionSummaryView for displaying nutritional summary information
 struct NutritionSummaryView: View {
-    let title: String
-    let value: Int
-    let color: Color
-    
+    var title: String
+    var value: Int
+    var color: Color
+    var icon: String
+
     var body: some View {
-        HStack {
-            Text("\(title):")
+        VStack(spacing: 15) {
+            Image(systemName: icon)
+                .foregroundColor(color)
+                .font(.system(size: 36))
+            Text(title)
                 .font(.headline)
                 .foregroundColor(.secondary)
-            Spacer()
             Text("\(value)")
-                .font(.headline)
-                .foregroundColor(color)
+                .font(.title2) // Larger font size
+                .foregroundColor(.primary)
         }
     }
 }
@@ -91,9 +107,9 @@ struct FoodListItemView: View {
                 Text(food.name ?? "")
                     .font(.headline)
                     .fontWeight(.bold)
-                Text("\(Int(food.calories)) calories")
+                Text(food.category ?? "")
                     .font(.subheadline)
-                    .foregroundColor(.red)
+                    .foregroundColor(.green)
             }
             Spacer()
             Text(calcTimeSince(data: food.data!))
@@ -105,6 +121,8 @@ struct FoodListItemView: View {
         .padding(.horizontal)
     }
 }
+
+
 
 
 

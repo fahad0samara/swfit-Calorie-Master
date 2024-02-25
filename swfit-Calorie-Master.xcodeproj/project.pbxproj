@@ -16,6 +16,7 @@
 		296CB0EB2B88773300D573B3 /* EditFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB0EA2B88773300D573B3 /* EditFoodView.swift */; };
 		296CB0ED2B88777D00D573B3 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB0EC2B88777D00D573B3 /* AddFoodView.swift */; };
 		296CB0EF2B88C22900D573B3 /* NutritionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB0EE2B88C22900D573B3 /* NutritionAPI.swift */; };
+		29A035E82B8B45430024C426 /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A035E72B8B45430024C426 /* FoodDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		296CB0EA2B88773300D573B3 /* EditFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFoodView.swift; sourceTree = "<group>"; };
 		296CB0EC2B88777D00D573B3 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
 		296CB0EE2B88C22900D573B3 /* NutritionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionAPI.swift; sourceTree = "<group>"; };
+		29A035E72B8B45430024C426 /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				296CB0EA2B88773300D573B3 /* EditFoodView.swift */,
 				296CB0EC2B88777D00D573B3 /* AddFoodView.swift */,
 				296CB0EE2B88C22900D573B3 /* NutritionAPI.swift */,
+				29A035E72B8B45430024C426 /* FoodDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				296CB0EF2B88C22900D573B3 /* NutritionAPI.swift in Sources */,
 				296CB0ED2B88777D00D573B3 /* AddFoodView.swift in Sources */,
 				296CB0E72B886FD500D573B3 /* FoodItem.xcdatamodeld in Sources */,
+				29A035E82B8B45430024C426 /* FoodDetailView.swift in Sources */,
 				296CB0D52B886E4800D573B3 /* swfit_Calorie_MasterApp.swift in Sources */,
 				296CB0EB2B88773300D573B3 /* EditFoodView.swift in Sources */,
 			);
