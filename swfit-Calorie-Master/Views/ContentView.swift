@@ -13,6 +13,8 @@ struct ContentView: View {
     @State private var showAddFoodView = false
     @State private var selectedFood: FoodEntity?
 
+    
+    
 
     var body: some View {
         NavigationView {
