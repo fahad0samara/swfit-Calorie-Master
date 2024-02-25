@@ -14,6 +14,9 @@ class CoreDataViewModel: ObservableObject {
     @Published var food: [FoodEntity] = []
     @Published var totalCaloriesToday: Double = 0
     
+       let categories = ["Vegetables", "Fruits", "Proteins", "Grains", "Dairy", "Sweets", "Beverages"]
+
+    
     init() {
         container.loadPersistentStores { description, error in
             if let error = error {
@@ -46,25 +49,34 @@ class CoreDataViewModel: ObservableObject {
         }
     }
     
-    func addFood(name: String, calories: Double, context: NSManagedObjectContext) {
+    func addFood(name: String, calories: Double, protein: Double, fat: Double, carbohydrates: Double, category: String, context: NSManagedObjectContext) {
         let food = FoodEntity(context: context)
         food.id = UUID()
         food.name = name
         food.calories = calories
+        food.protein = protein
+        food.fat = fat
+        food.carbohydrates = carbohydrates
+        food.category = category
         food.data = Date()
         
         save(context: context)
     }
-    
-    func editFood(food: FoodEntity, name: String, calories: Double, context: NSManagedObjectContext) {
+
+    func editFood(food: FoodEntity, name: String, calories: Double, protein: Double, fat: Double, carbohydrates: Double, category: String, context: NSManagedObjectContext) {
         food.name = name
         food.data = Date()
         food.calories = calories
+        food.protein = protein
+        food.fat = fat
+        food.carbohydrates = carbohydrates
+        food.category = category
         
         save(context: context)
     }
+
     
-    // these fun for delet
+    // these fun for delete
     
     func deleteFood(atOffsets offsets: IndexSet) {
         offsets.forEach { index in
@@ -73,7 +85,7 @@ class CoreDataViewModel: ObservableObject {
         }
         save(context: container.viewContext)
     }
-    // these fun for updtate
+    // these fun for update
     private func updateTotalCalories() {
         totalCaloriesToday = food.reduce(0.0) { result, item in
             if Calendar.current.isDateInToday(item.data ?? Date()) {
@@ -83,4 +95,34 @@ class CoreDataViewModel: ObservableObject {
             }
         }
     }
+    
+    func totalProteinToday() -> Double {
+            var proteinToday: Double = 0
+            for item in food {
+                if Calendar.current.isDateInToday(item.data ?? Date()) {
+                    proteinToday += item.protein
+                }
+            }
+            return proteinToday
+        }
+
+        func totalFatToday() -> Double {
+            var fatToday: Double = 0
+            for item in food {
+                if Calendar.current.isDateInToday(item.data ?? Date()) {
+                    fatToday += item.fat
+                }
+            }
+            return fatToday
+        }
+
+        func totalCarbohydratesToday() -> Double {
+            var carbohydratesToday: Double = 0
+            for item in food {
+                if Calendar.current.isDateInToday(item.data ?? Date()) {
+                    carbohydratesToday += item.carbohydrates
+                }
+            }
+            return carbohydratesToday
+        }
 }

@@ -14,35 +14,37 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("\(Int(viewModel.totalCaloriesToday)) Kcal Today").foregroundColor(.gray)
-                    .padding(.horizontal)
-
+            VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Today's Nutrition")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                    
+                    NutritionSummaryView(title: "Calories", value: Int(viewModel.totalCaloriesToday), color: .gray)
+                    NutritionSummaryView(title: "Protein", value: Int(viewModel.totalProteinToday()), color: .blue)
+                    NutritionSummaryView(title: "Fat", value: Int(viewModel.totalFatToday()), color: .green)
+                    NutritionSummaryView(title: "Carbohydrates", value: Int(viewModel.totalCarbohydratesToday()), color: .orange)
+                }
+                .padding(.horizontal)
+                
                 List {
                     ForEach(viewModel.food) { food in
                         NavigationLink(destination: EditFoodView(food: food, viewModel: viewModel)) {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(food.name ?? "").bold()
-                                    Text("\(Int(food.calories)) calories").foregroundColor(.red)
-                                }
-                                Spacer()
-                                Text(calcTimeSince(data: food.data!))
-                                    .foregroundColor(.orange)
-                                    .italic()
-                            }
+                            FoodListItemView(food: food)
                         }
                     }
                     .onDelete(perform: deleteFood)
                 }
             }
-            .navigationTitle("Calories")
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         showAddFoodView.toggle()
                     }) {
-                        Label("Add Food", systemImage: "plus.circle")
+                        Image(systemName: "plus.circle")
+                            .font(.title)
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -61,6 +63,50 @@ struct ContentView: View {
         }
     }
 }
+
+struct NutritionSummaryView: View {
+    let title: String
+    let value: Int
+    let color: Color
+    
+    var body: some View {
+        HStack {
+            Text("\(title):")
+                .font(.headline)
+                .foregroundColor(.secondary)
+            Spacer()
+            Text("\(value)")
+                .font(.headline)
+                .foregroundColor(color)
+        }
+    }
+}
+
+struct FoodListItemView: View {
+    let food: FoodEntity
+    
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(food.name ?? "")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                Text("\(Int(food.calories)) calories")
+                    .font(.subheadline)
+                    .foregroundColor(.red)
+            }
+            Spacer()
+            Text(calcTimeSince(data: food.data!))
+                .font(.subheadline)
+                .foregroundColor(.orange)
+                .italic()
+        }
+        .padding(.vertical, 8)
+        .padding(.horizontal)
+    }
+}
+
+
 
 func calcTimeSince(data: Date) -> String {
     let calendar = Calendar.current
