@@ -5,6 +5,11 @@
 
 Calorie Master is a powerful iOS app designed to help you track your daily calorie intake and nutritional information with ease. Whether you're striving to maintain a healthy diet, lose weight, or gain muscle, Calorie Master provides the tools you need to make informed dietary choices.
 
+| Screenshot 1 | Screenshot 2 | Screenshot 3 |
+| --- | --- | --- |
+| [![Screenshot 1](https://github.com/fahad0samara/swfit-Calorie-Master/assets/90055525/aaa8bb9b-950e-42df-b0ae-6ca2222a18c9) |[![Screenshot 2](https://github.com/fahad0samara/swfit-Calorie-Master/assets/90055525/99fae364-6229-4144-9fbd-0ad2a8732cd3) | [![Screenshot 3](https://github.com/fahad0samara/swfit-Calorie-Master/assets/90055525/58dfb191-d269-47f1-9d0d-5703072fdf37) |
+
+
 ## Features
 
 - **Food Tracking**: Log your meals and snacks throughout the day, including details such as name, calories, protein, fat, and carbohydrates.
